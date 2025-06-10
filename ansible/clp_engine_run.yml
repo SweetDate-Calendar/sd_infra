@@ -1,0 +1,6 @@
+- name: Run clp_engine
+  hosts: all
+
+  roles:
+    - clp_engine_up
+    - clp_engine_start

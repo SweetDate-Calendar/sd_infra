@@ -1,7 +1,0 @@
-- name: Start cp_host with mix phx.server on port 4001
-  shell: |
-    cd {{ cp_host_root }} && mix phx.server &
-  args:
-    executable: /bin/bash
-  async: 10
-  poll: 0

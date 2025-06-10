@@ -7,4 +7,4 @@ all:
       hosts:
         localhost:
       vars:
-        cp_backend_root: "{{ inventory_dir }}/../../clp_engine"
+        clp_engine_dir: "{{ inventory_dir }}/../../clp_engine"

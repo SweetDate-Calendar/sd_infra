@@ -1,0 +1,4 @@
+- name: Kill clp_engine server
+  shell: |
+    pgrep -f "{{ clp_engine_dir }}/.*mix phx.server" | xargs -r kill
+  ignore_errors: true
