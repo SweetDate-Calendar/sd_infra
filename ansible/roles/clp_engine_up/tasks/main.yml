@@ -1,0 +1,4 @@
+- name: Start clp_engine PostgreSQL container
+  ansible.builtin.command:
+    cmd: docker compose -p clp_engine -f compose.clp_engine.yml up -d
+    chdir: "{{ role_path }}/../shared/files"

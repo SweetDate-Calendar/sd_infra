@@ -1,0 +1,10 @@
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+  children:
+    backend:
+      hosts:
+        localhost:
+      vars:
+        clp_engine_dir: "{{ inventory_dir }}/../../clp_engine"

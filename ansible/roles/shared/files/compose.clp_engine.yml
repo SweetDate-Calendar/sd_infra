@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16
+    container_name: clp_engine_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: clp_engine_dev
+    ports:
+      - "5433:5432"
+    volumes:
+      - clp_engine_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  clp_engine_postgres_data: {}

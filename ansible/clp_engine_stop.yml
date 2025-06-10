@@ -1,0 +1,6 @@
+- name: Stop clp_engine
+  hosts: all
+
+  roles:
+    - clp_engine_down
+    - clp_engine_stop
