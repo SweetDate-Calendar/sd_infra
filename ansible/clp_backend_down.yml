@@ -1,0 +1,5 @@
+- name: Stop clp_backend development
+  hosts: all
+
+  roles:
+    - clp_backend_down

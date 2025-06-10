@@ -1,0 +1,21 @@
+- name: Stop all local development services
+  hosts: localhost
+  become: false
+  tasks:
+    - name: Kill cp_backend Phoenix server
+      shell: pkill -f "mix phx.server"
+      ignore_errors: true
+
+    - name: Kill cp_host Phoenix server
+      shell: pkill -f "cp_host.*mix phx.server"
+      ignore_errors: true
+
+    - name: Kill Lumina Rails server
+      shell: pkill -f "rails server"
+      ignore_errors: true
+
+    - name: Stop docker compose services
+      shell: docker compose -f compose.dev.yml down
+      args:
+        chdir: "{{ playbook_dir }}/.."
+        executable: /bin/bash

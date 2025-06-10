@@ -1,0 +1,4 @@
+- name: Start backend PostgreSQL container
+  ansible.builtin.command:
+    cmd: docker compose -p clp_backend -f compose.clp_backend.yml down
+    chdir: "{{ role_path }}/../shared/files"

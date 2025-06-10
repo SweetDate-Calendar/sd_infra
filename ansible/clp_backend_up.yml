@@ -1,0 +1,5 @@
+- name: Run local development setup
+  hosts: all
+
+  roles:
+    - clp_backend_up
