@@ -9,6 +9,8 @@ defmodule Clp do
       ["engine", "down"] -> run_playbook("clp_engine_down.yml")
       ["engine", "run"] -> run_playbook("clp_engine_run.yml")
       ["engine", "stop"] -> run_playbook("clp_engine_stop.yml")
+      ["scaffold", "ruby"] -> scaffold_ruby()
+      ["scaffold", "elixir"] -> scaffold_elixir()
       _ -> show_help()
     end
   end
@@ -39,6 +41,14 @@ defmodule Clp do
 
       System.halt(status)
     end
+  end
+
+  defp scaffold_ruby do
+    Clp.Scaffold.RubyWrapper.run()
+  end
+
+  defp scaffold_elixir do
+    Clp.Scaffold.ElixirWrapper.run()
   end
 
   @doc """
