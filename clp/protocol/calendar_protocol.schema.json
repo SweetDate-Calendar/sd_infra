@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Chronopipe Protocol Definition",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Protocol version identifier"
+    },
+    "namespaces": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Z_]+$": {
+          "type": "object",
+          "description": "Namespace containing related commands",
+          "properties": {
+            "commands": {
+              "type": "object",
+              "patternProperties": {
+                "^[A-Z_]+$": {
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "params": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "required": {
+                            "type": "boolean"
+                          },
+                          "enum": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "description": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "type"
+                        ]
+                      }
+                    },
+                    "response": {
+                      "type": "object",
+                      "description": "Optional response schema",
+                      "properties": {
+                        "type": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "params"
+                  ]
+                }
+              }
+            }
+          },
+          "required": [
+            "commands"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "version",
+    "namespaces"
+  ]
+}
