@@ -1,11 +1,13 @@
 # The directory Mix will write compiled artifacts to.
 /_build/
+/clp/_build/
 
 # If you run "mix test --cover", coverage assets end up here.
 /cover/
 
 # The directory Mix downloads your dependencies sources to.
 /deps/
+/clp/deps/
 
 # Where third-party dependencies like ExDoc output generated docs.
 /doc/
@@ -24,3 +26,10 @@ clp-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+/clp/tmp/
+
+
+
+
+
+
