@@ -1,0 +1,188 @@
+{
+  "CALENDARS": {
+    "commands": [
+      {
+        "name": "LIST",
+        "description": "List all calendars",
+        "params": {},
+        "response": {
+          "type": "calendar_list",
+          "description": "List of calendars"
+        }
+      },
+      {
+        "name": "GET",
+        "description": "Get a specific calendar by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "calendar",
+          "description": "The calendar object"
+        }
+      },
+      {
+        "name": "CREATE",
+        "description": "Create a new calendar",
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "color_theme": {
+            "type": "string",
+            "required": true
+          },
+          "visibility": {
+            "type": "string",
+            "required": true,
+            "enum": [
+              "private",
+              "shared",
+              "public",
+              "unlisted",
+              "tiered"
+            ]
+          },
+          "tier_id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "calendar",
+          "description": "The created calendar"
+        }
+      },
+      {
+        "name": "UPDATE",
+        "description": "Update an existing calendar",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": false
+          },
+          "color_theme": {
+            "type": "string",
+            "required": false
+          },
+          "visibility": {
+            "type": "string",
+            "required": false
+          },
+          "tier_id": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "response": {
+          "type": "calendar",
+          "description": "The updated calendar"
+        }
+      },
+      {
+        "name": "DELETE",
+        "description": "Delete a calendar by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "calendar",
+          "description": "The deleted calendar"
+        }
+      },
+      {
+        "name": "ADD_USER",
+        "description": "Add a user to a calendar with a role",
+        "params": {
+          "calendar_id": {
+            "type": "string",
+            "required": true
+          },
+          "user_id": {
+            "type": "string",
+            "required": true
+          },
+          "role": {
+            "type": "string",
+            "required": true,
+            "enum": [
+              "owner",
+              "editor",
+              "viewer"
+            ]
+          }
+        },
+        "response": {
+          "type": "calendar_user",
+          "description": "The calendar user association"
+        }
+      },
+      {
+        "name": "UPDATE_USER",
+        "description": "Update a calendar user's role",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "role": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "calendar_user",
+          "description": "The updated calendar user"
+        }
+      },
+      {
+        "name": "LIST_USERS",
+        "description": "List all users associated with calendars",
+        "params": {},
+        "response": {
+          "type": "calendar_user_list",
+          "description": "List of calendar-user associations"
+        }
+      },
+      {
+        "name": "GET_USER",
+        "description": "Get a calendar user association by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "calendar_user",
+          "description": "The calendar user association"
+        }
+      },
+      {
+        "name": "REMOVE_USER",
+        "description": "Remove a user from a calendar",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "calendar_user",
+          "description": "The removed calendar user association"
+        }
+      }
+    ]
+  }
+}

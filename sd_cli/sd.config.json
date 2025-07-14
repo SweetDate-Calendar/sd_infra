@@ -1,0 +1,11 @@
+{
+  "protocol": "protocol/protocol.json",
+  "targets": {
+    "ruby": {
+      "output": "out/ruby"
+    },
+    "elixir": {
+      "output": "out/elixir"
+    }
+  }
+}

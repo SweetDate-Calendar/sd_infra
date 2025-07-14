@@ -1,0 +1,12 @@
+{application,sd,
+             [{modules,['Elixir.SweetDate','Elixir.SweetDate.Config',
+                        'Elixir.SweetDate.Protocol',
+                        'Elixir.SweetDate.Scaffold',
+                        'Elixir.SweetDate.Scaffold.ElixirWrapper',
+                        'Elixir.SweetDate.Scaffold.RubyWrapper']},
+              {optional_applications,[]},
+              {applications,[kernel,stdlib,elixir,logger,ex_json_schema,
+                             jason]},
+              {description,"sd"},
+              {registered,[]},
+              {vsn,"0.1.0"}]}.

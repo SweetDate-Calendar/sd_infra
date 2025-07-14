@@ -1,0 +1,271 @@
+{
+  "ACCOUNTS": {
+    "commands": [
+      {
+        "name": "LIST",
+        "description": "Returns the list of accounts",
+        "params": {},
+        "response": {
+          "type": "account_list",
+          "description": "List of accounts"
+        }
+      },
+      {
+        "name": "GET",
+        "description": "Gets a single account by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "account",
+          "description": "The account object"
+        }
+      },
+      {
+        "name": "CREATE",
+        "description": "Creates a new account",
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "account",
+          "description": "The created account"
+        }
+      },
+      {
+        "name": "UPDATE",
+        "description": "Updates an existing account",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "response": {
+          "type": "account",
+          "description": "The updated account"
+        }
+      },
+      {
+        "name": "DELETE",
+        "description": "Deletes an account",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "account",
+          "description": "The deleted account"
+        }
+      },
+      {
+        "name": "LIST_USERS",
+        "description": "Returns the list of users",
+        "params": {},
+        "response": {
+          "type": "user_list",
+          "description": "List of users"
+        }
+      },
+      {
+        "name": "GET_USER",
+        "description": "Gets a single user by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "user",
+          "description": "The user object"
+        }
+      },
+      {
+        "name": "CREATE_USER",
+        "description": "Creates a new user",
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "email": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "user",
+          "description": "The created user"
+        }
+      },
+      {
+        "name": "UPDATE_USER",
+        "description": "Updates an existing user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": false
+          },
+          "email": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "response": {
+          "type": "user",
+          "description": "The updated user"
+        }
+      },
+      {
+        "name": "DELETE_USER",
+        "description": "Deletes a user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "user",
+          "description": "The deleted user"
+        }
+      },
+      {
+        "name": "CREATE_ACCOUNT_USER",
+        "description": "Create account user association with role",
+        "params": {
+          "account_id": {
+            "type": "string",
+            "required": true
+          },
+          "user_id": {
+            "type": "string",
+            "required": true
+          },
+          "role": {
+            "type": "string",
+            "required": true,
+            "enum": [
+              "owner",
+              "admin",
+              "member"
+            ]
+          }
+        },
+        "response": {
+          "type": "account_user",
+          "description": "The created account user association"
+        }
+      },
+      {
+        "name": "GET_ACCOUNT_USER",
+        "description": "Get an account user by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "account_user",
+          "description": "The account user association"
+        }
+      },
+      {
+        "name": "LIST_ACCOUNT_USERS",
+        "description": "List all account users",
+        "params": {},
+        "response": {
+          "type": "account_user_list",
+          "description": "List of account user associations"
+        }
+      },
+      {
+        "name": "UPDATE_ACCOUNT_USER",
+        "description": "Update an account user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "role": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "owner",
+              "admin",
+              "member"
+            ]
+          }
+        },
+        "response": {
+          "type": "account_user",
+          "description": "The updated account user"
+        }
+      },
+      {
+        "name": "DELETE_ACCOUNT_USER",
+        "description": "Delete an account user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "account_user",
+          "description": "The deleted account user association"
+        }
+      },
+      {
+        "name": "CREATE_TIER",
+        "description": "Creates a new tier",
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "account_id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "tier",
+          "description": "The created tier"
+        }
+      },
+      {
+        "name": "LIST_CALENDARS",
+        "description": "List calendars for an account",
+        "params": {
+          "account_id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "calendar_list",
+          "description": "List of calendars for the account"
+        }
+      }
+    ]
+  }
+}

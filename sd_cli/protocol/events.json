@@ -1,0 +1,302 @@
+{
+  "EVENTS": {
+    "commands": [
+      {
+        "name": "LIST",
+        "description": "Returns the list of events",
+        "params": {},
+        "response": {
+          "type": "event_list",
+          "description": "List of events"
+        }
+      },
+      {
+        "name": "GET",
+        "description": "Gets a single event by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "event",
+          "description": "The event object"
+        }
+      },
+      {
+        "name": "CREATE",
+        "description": "Creates a new event",
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "required": false
+          },
+          "status": {
+            "type": "string",
+            "required": true,
+            "enum": [
+              "draft",
+              "scheduled",
+              "live",
+              "completed",
+              "cancelled"
+            ]
+          },
+          "color_theme": {
+            "type": "string",
+            "required": false
+          },
+          "visibility": {
+            "type": "string",
+            "required": true,
+            "enum": [
+              "private",
+              "public",
+              "shared"
+            ]
+          },
+          "location": {
+            "type": "string",
+            "required": false
+          },
+          "start_time": {
+            "type": "datetime",
+            "required": true
+          },
+          "end_time": {
+            "type": "datetime",
+            "required": true
+          },
+          "recurrence_rule": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "none",
+              "daily",
+              "weekly",
+              "monthly",
+              "yearly"
+            ]
+          },
+          "all_day": {
+            "type": "boolean",
+            "required": false
+          },
+          "calendar_id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "event",
+          "description": "The created event"
+        }
+      },
+      {
+        "name": "UPDATE",
+        "description": "Updates an existing event",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": false
+          },
+          "description": {
+            "type": "string",
+            "required": false
+          },
+          "status": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "draft",
+              "scheduled",
+              "live",
+              "completed",
+              "cancelled"
+            ]
+          },
+          "color_theme": {
+            "type": "string",
+            "required": false
+          },
+          "visibility": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "private",
+              "public",
+              "shared"
+            ]
+          },
+          "location": {
+            "type": "string",
+            "required": false
+          },
+          "start_time": {
+            "type": "datetime",
+            "required": false
+          },
+          "end_time": {
+            "type": "datetime",
+            "required": false
+          },
+          "recurrence_rule": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "none",
+              "daily",
+              "weekly",
+              "monthly",
+              "yearly"
+            ]
+          },
+          "all_day": {
+            "type": "boolean",
+            "required": false
+          },
+          "calendar_id": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "response": {
+          "type": "event",
+          "description": "The updated event"
+        }
+      },
+      {
+        "name": "DELETE",
+        "description": "Deletes an event",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "event",
+          "description": "The deleted event"
+        }
+      },
+      {
+        "name": "CREATE_EVENT_USER",
+        "description": "Create event user association with role and status",
+        "params": {
+          "event_id": {
+            "type": "string",
+            "required": true
+          },
+          "user_id": {
+            "type": "string",
+            "required": true
+          },
+          "role": {
+            "type": "string",
+            "required": true,
+            "enum": [
+              "organizer",
+              "attendee",
+              "presenter"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "required": true,
+            "enum": [
+              "invited",
+              "accepted",
+              "declined",
+              "maybe",
+              "cancelled"
+            ]
+          }
+        },
+        "response": {
+          "type": "event_user",
+          "description": "The created event user association"
+        }
+      },
+      {
+        "name": "GET_EVENT_USER",
+        "description": "Get an event user by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "event_user",
+          "description": "The event user association"
+        }
+      },
+      {
+        "name": "LIST_EVENT_USERS",
+        "description": "List all event users",
+        "params": {},
+        "response": {
+          "type": "event_user_list",
+          "description": "List of event user associations"
+        }
+      },
+      {
+        "name": "UPDATE_EVENT_USER",
+        "description": "Update an event user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "role": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "organizer",
+              "attendee",
+              "presenter"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "invited",
+              "accepted",
+              "declined",
+              "maybe",
+              "cancelled"
+            ]
+          }
+        },
+        "response": {
+          "type": "event_user",
+          "description": "The updated event user"
+        }
+      },
+      {
+        "name": "DELETE_EVENT_USER",
+        "description": "Delete an event user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "event_user",
+          "description": "The deleted event user association"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "TIERS": {
+    "commands": [
+      {
+        "name": "LIST",
+        "description": "Returns the list of tiers",
+        "params": {},
+        "response": {
+          "type": "tier_list",
+          "description": "List of tiers"
+        }
+      },
+      {
+        "name": "GET",
+        "description": "Gets a single tier by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "tier",
+          "description": "The tier object"
+        }
+      },
+      {
+        "name": "UPDATE",
+        "description": "Updates an existing tier",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": false
+          },
+          "account_id": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "response": {
+          "type": "tier",
+          "description": "The updated tier"
+        }
+      },
+      {
+        "name": "DELETE",
+        "description": "Deletes a tier",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "tier",
+          "description": "The deleted tier"
+        }
+      },
+      {
+        "name": "CREATE_TIER_USER",
+        "description": "Create a tier user association with role",
+        "params": {
+          "tier_id": {
+            "type": "string",
+            "required": true
+          },
+          "user_id": {
+            "type": "string",
+            "required": true
+          },
+          "role": {
+            "type": "string",
+            "required": true,
+            "enum": [
+              "owner",
+              "editor",
+              "viewer"
+            ]
+          }
+        },
+        "response": {
+          "type": "tier_user",
+          "description": "The created tier user association"
+        }
+      },
+      {
+        "name": "GET_TIER_USER",
+        "description": "Get a tier user by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "tier_user",
+          "description": "The tier user association"
+        }
+      },
+      {
+        "name": "LIST_TIER_USERS",
+        "description": "List all tier users",
+        "params": {},
+        "response": {
+          "type": "tier_user_list",
+          "description": "List of tier user associations"
+        }
+      },
+      {
+        "name": "UPDATE_TIER_USER",
+        "description": "Update a tier user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "role": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "owner",
+              "editor",
+              "viewer"
+            ]
+          }
+        },
+        "response": {
+          "type": "tier_user",
+          "description": "The updated tier user"
+        }
+      },
+      {
+        "name": "DELETE_TIER_USER",
+        "description": "Delete a tier user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "tier_user",
+          "description": "The deleted tier user association"
+        }
+      }
+    ]
+  }
+}

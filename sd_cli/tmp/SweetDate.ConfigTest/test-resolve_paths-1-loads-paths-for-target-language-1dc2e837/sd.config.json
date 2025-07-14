@@ -1,0 +1,8 @@
+{
+      "protocol": "protocol/protocol.json",
+      "targets": {
+        "ruby": {
+          "output": "out/ruby/sweet_date"
+        }
+      }
+    }
