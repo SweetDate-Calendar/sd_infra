@@ -1,0 +1,6 @@
+- name: Run sd_engine
+  hosts: all
+
+  roles:
+    - sd_engine_up
+    - sd_engine_start

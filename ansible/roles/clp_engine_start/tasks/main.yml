@@ -1,7 +1,0 @@
-- name: Start clp_engine with mix phx.server
-  shell: |
-    cd {{ clp_engine_dir }} && mix phx.server &
-  args:
-    executable: /bin/bash
-  async: 10
-  poll: 0

@@ -1,0 +1,4 @@
+- name: Kill sd_engine server
+  shell: |
+    pgrep -f "{{ sd_engine_dir }}/.*mix phx.server" | xargs -r kill
+  ignore_errors: true

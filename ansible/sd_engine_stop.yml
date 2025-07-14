@@ -1,0 +1,6 @@
+- name: Stop sd_engine
+  hosts: all
+
+  roles:
+    - sd_engine_down
+    - sd_engine_stop

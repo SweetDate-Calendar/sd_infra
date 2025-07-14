@@ -7,4 +7,4 @@ all:
       hosts:
         localhost:
       vars:
-        clp_engine_dir: "{{ inventory_dir }}/../../clp_engine"
+        sd_engine_dir: "{{ inventory_dir }}/../../sd_engine"

@@ -1,0 +1,4 @@
+- name: Start sd_engine PostgreSQL container
+  ansible.builtin.command:
+    cmd: docker compose -p sd_engine -f compose.sd_engine.yml up -d
+    chdir: "{{ role_path }}/../shared/files"

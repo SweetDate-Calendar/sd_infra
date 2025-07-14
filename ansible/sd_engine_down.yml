@@ -1,0 +1,5 @@
+- name: Stop sd_backend development
+  hosts: all
+
+  roles:
+    - sd_engine_down

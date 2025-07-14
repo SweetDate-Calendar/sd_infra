@@ -1,0 +1,9 @@
+[tools]
+elixir = "1.18.3-otp-27"
+erlang = "27.3.4"
+direnv = "2.34.0"
+
+[env]
+MIX_ENV = "dev"
+SD_BACKEND_TCP_PORT="super_secret"
+SD_TCP_PORT="5050"
