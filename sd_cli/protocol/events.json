@@ -7,7 +7,21 @@
         "params": {},
         "response": {
           "type": "event_list",
-          "description": "List of events"
+          "description": "List of events",
+          "example": {
+            "status": "ok",
+            "events": [
+              {
+                "id": "e1",
+                "name": "Team Sync",
+                "calendar_id": "c1"
+              }
+            ]
+          },
+          "error_example": {
+            "status": "error",
+            "message": "unauthorized"
+          }
         }
       },
       {
@@ -21,7 +35,19 @@
         },
         "response": {
           "type": "event",
-          "description": "The event object"
+          "description": "The event object",
+          "example": {
+            "status": "ok",
+            "event": {
+              "id": "e1",
+              "name": "Team Sync",
+              "calendar_id": "c1"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       },
       {
@@ -94,7 +120,19 @@
         },
         "response": {
           "type": "event",
-          "description": "The created event"
+          "description": "The created event",
+          "example": {
+            "status": "ok",
+            "event": {
+              "id": "e2",
+              "name": "New Event",
+              "calendar_id": "c1"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "validation failed"
+          }
         }
       },
       {
@@ -115,14 +153,7 @@
           },
           "status": {
             "type": "string",
-            "required": false,
-            "enum": [
-              "draft",
-              "scheduled",
-              "live",
-              "completed",
-              "cancelled"
-            ]
+            "required": false
           },
           "color_theme": {
             "type": "string",
@@ -130,12 +161,7 @@
           },
           "visibility": {
             "type": "string",
-            "required": false,
-            "enum": [
-              "private",
-              "public",
-              "shared"
-            ]
+            "required": false
           },
           "location": {
             "type": "string",
@@ -151,14 +177,7 @@
           },
           "recurrence_rule": {
             "type": "string",
-            "required": false,
-            "enum": [
-              "none",
-              "daily",
-              "weekly",
-              "monthly",
-              "yearly"
-            ]
+            "required": false
           },
           "all_day": {
             "type": "boolean",
@@ -171,7 +190,18 @@
         },
         "response": {
           "type": "event",
-          "description": "The updated event"
+          "description": "The updated event",
+          "example": {
+            "status": "ok",
+            "event": {
+              "id": "e1",
+              "name": "Updated Event"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found or invalid input"
+          }
         }
       },
       {
@@ -185,7 +215,17 @@
         },
         "response": {
           "type": "event",
-          "description": "The deleted event"
+          "description": "The deleted event",
+          "example": {
+            "status": "ok",
+            "event": {
+              "id": "e1"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       },
       {
@@ -223,7 +263,21 @@
         },
         "response": {
           "type": "event_user",
-          "description": "The created event user association"
+          "description": "The created event user association",
+          "example": {
+            "status": "ok",
+            "event_user": {
+              "id": "eu1",
+              "event_id": "e1",
+              "user_id": "u1",
+              "role": "organizer",
+              "status": "accepted"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "invalid input"
+          }
         }
       },
       {
@@ -237,7 +291,17 @@
         },
         "response": {
           "type": "event_user",
-          "description": "The event user association"
+          "description": "The event user association",
+          "example": {
+            "status": "ok",
+            "event_user": {
+              "id": "eu1"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       },
       {
@@ -246,7 +310,23 @@
         "params": {},
         "response": {
           "type": "event_user_list",
-          "description": "List of event user associations"
+          "description": "List of event user associations",
+          "example": {
+            "status": "ok",
+            "event_users": [
+              {
+                "id": "eu1",
+                "event_id": "e1",
+                "user_id": "u1",
+                "role": "presenter",
+                "status": "invited"
+              }
+            ]
+          },
+          "error_example": {
+            "status": "error",
+            "message": "unauthorized"
+          }
         }
       },
       {
@@ -259,28 +339,27 @@
           },
           "role": {
             "type": "string",
-            "required": false,
-            "enum": [
-              "organizer",
-              "attendee",
-              "presenter"
-            ]
+            "required": false
           },
           "status": {
             "type": "string",
-            "required": false,
-            "enum": [
-              "invited",
-              "accepted",
-              "declined",
-              "maybe",
-              "cancelled"
-            ]
+            "required": false
           }
         },
         "response": {
           "type": "event_user",
-          "description": "The updated event user"
+          "description": "The updated event user",
+          "example": {
+            "status": "ok",
+            "event_user": {
+              "id": "eu1",
+              "status": "declined"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found or invalid update"
+          }
         }
       },
       {
@@ -294,7 +373,17 @@
         },
         "response": {
           "type": "event_user",
-          "description": "The deleted event user association"
+          "description": "The deleted event user association",
+          "example": {
+            "status": "ok",
+            "event_user": {
+              "id": "eu1"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       }
     ]

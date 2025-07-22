@@ -4,6 +4,6 @@
     "accounts.json",
     "calendars.json",
     "events.json",
-    "tiers.json"
+    "tenants.json"
   ]
 }

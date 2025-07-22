@@ -9,6 +9,6 @@ mix escript.build
 ## Usage
 When not installed. Run from project root
 ```
-./sd help
+./sweet_date help
 ```
 

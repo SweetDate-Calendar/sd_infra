@@ -7,7 +7,24 @@
         "params": {},
         "response": {
           "type": "account_list",
-          "description": "List of accounts"
+          "description": "List of accounts",
+          "example": {
+            "status": "ok",
+            "accounts": [
+              {
+                "id": "acc-123",
+                "name": "Acme Corp"
+              },
+              {
+                "id": "acc-456",
+                "name": "Globex Inc"
+              }
+            ]
+          },
+          "error_example": {
+            "status": "error",
+            "message": "unauthorized"
+          }
         }
       },
       {
@@ -21,7 +38,18 @@
         },
         "response": {
           "type": "account",
-          "description": "The account object"
+          "description": "The account object",
+          "example": {
+            "status": "ok",
+            "account": {
+              "id": "acc-123",
+              "name": "Acme Corp"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       },
       {
@@ -35,7 +63,18 @@
         },
         "response": {
           "type": "account",
-          "description": "The created account"
+          "description": "The created account",
+          "example": {
+            "status": "ok",
+            "account": {
+              "id": "acc-456",
+              "name": "NewCo Ltd"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "name can't be blank"
+          }
         }
       },
       {
@@ -53,7 +92,18 @@
         },
         "response": {
           "type": "account",
-          "description": "The updated account"
+          "description": "The updated account",
+          "example": {
+            "status": "ok",
+            "account": {
+              "id": "acc-123",
+              "name": "Updated Corp"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found or invalid input"
+          }
         }
       },
       {
@@ -67,7 +117,18 @@
         },
         "response": {
           "type": "account",
-          "description": "The deleted account"
+          "description": "The deleted account",
+          "example": {
+            "status": "ok",
+            "account": {
+              "id": "acc-123",
+              "name": "Deleted Inc"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       },
       {
@@ -76,86 +137,44 @@
         "params": {},
         "response": {
           "type": "user_list",
-          "description": "List of users"
-        }
-      },
-      {
-        "name": "GET_USER",
-        "description": "Gets a single user by ID",
-        "params": {
-          "id": {
-            "type": "string",
-            "required": true
-          }
-        },
-        "response": {
-          "type": "user",
-          "description": "The user object"
+          "description": "List of users",
+          "examples": [
+            {
+              "status": "ok",
+              "users": [
+                {
+                  "id": "u1",
+                  "name": "Alice",
+                  "email": "alice@example.com"
+                },
+                {
+                  "id": "u2",
+                  "name": "Bob",
+                  "email": "bob@example.com"
+                }
+              ]
+            },
+            {
+              "status": "error",
+              "message": "unauthorized"
+            }
+          ]
         }
       },
       {
         "name": "CREATE_USER",
-        "description": "Creates a new user",
-        "params": {
-          "name": {
-            "type": "string",
-            "required": true
-          },
-          "email": {
-            "type": "string",
-            "required": true
-          }
-        },
-        "response": {
-          "type": "user",
-          "description": "The created user"
-        }
-      },
-      {
-        "name": "UPDATE_USER",
-        "description": "Updates an existing user",
-        "params": {
-          "id": {
-            "type": "string",
-            "required": true
-          },
-          "name": {
-            "type": "string",
-            "required": false
-          },
-          "email": {
-            "type": "string",
-            "required": false
-          }
-        },
-        "response": {
-          "type": "user",
-          "description": "The updated user"
-        }
-      },
-      {
-        "name": "DELETE_USER",
-        "description": "Deletes a user",
-        "params": {
-          "id": {
-            "type": "string",
-            "required": true
-          }
-        },
-        "response": {
-          "type": "user",
-          "description": "The deleted user"
-        }
-      },
-      {
-        "name": "CREATE_ACCOUNT_USER",
-        "description": "Create account user association with role",
+        "description": "Creates a new user and associates with account if user doesn't exist",
+        "note": "This command will create a user if the email is not already in use, and will always create an account_user association with the specified role for the given account. Only the user is returned.",
         "params": {
           "account_id": {
             "type": "string",
             "required": true
           },
-          "user_id": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "email": {
             "type": "string",
             "required": true
           },
@@ -170,59 +189,25 @@
           }
         },
         "response": {
-          "type": "account_user",
-          "description": "The created account user association"
-        }
-      },
-      {
-        "name": "GET_ACCOUNT_USER",
-        "description": "Get an account user by ID",
-        "params": {
-          "id": {
-            "type": "string",
-            "required": true
-          }
-        },
-        "response": {
-          "type": "account_user",
-          "description": "The account user association"
-        }
-      },
-      {
-        "name": "LIST_ACCOUNT_USERS",
-        "description": "List all account users",
-        "params": {},
-        "response": {
-          "type": "account_user_list",
-          "description": "List of account user associations"
-        }
-      },
-      {
-        "name": "UPDATE_ACCOUNT_USER",
-        "description": "Update an account user",
-        "params": {
-          "id": {
-            "type": "string",
-            "required": true
+          "type": "user",
+          "description": "The created or existing user",
+          "example": {
+            "status": "ok",
+            "user": {
+              "id": "uuid",
+              "name": "Alice",
+              "email": "alice@example.com"
+            }
           },
-          "role": {
-            "type": "string",
-            "required": false,
-            "enum": [
-              "owner",
-              "admin",
-              "member"
-            ]
+          "error_example": {
+            "status": "error",
+            "message": "validation failed"
           }
-        },
-        "response": {
-          "type": "account_user",
-          "description": "The updated account user"
         }
       },
       {
-        "name": "DELETE_ACCOUNT_USER",
-        "description": "Delete an account user",
+        "name": "GET_USER",
+        "description": "Gets a single user by ID",
         "params": {
           "id": {
             "type": "string",
@@ -230,13 +215,51 @@
           }
         },
         "response": {
-          "type": "account_user",
-          "description": "The deleted account user association"
+          "type": "user",
+          "description": "The user object",
+          "example": {
+            "status": "ok",
+            "user": {
+              "id": "u1",
+              "name": "Alice",
+              "email": "alice@example.com"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       },
       {
-        "name": "CREATE_TIER",
-        "description": "Creates a new tier",
+        "name": "DELETE_USER",
+        "description": "Deletes a user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "user",
+          "description": "The deleted user",
+          "example": {
+            "status": "ok",
+            "user": {
+              "id": "u1",
+              "name": "Alice",
+              "email": "alice@example.com"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
+        }
+      },
+      {
+        "name": "CREATE_TENANT",
+        "description": "Creates a new tenant",
         "params": {
           "name": {
             "type": "string",
@@ -248,22 +271,19 @@
           }
         },
         "response": {
-          "type": "tier",
-          "description": "The created tier"
-        }
-      },
-      {
-        "name": "LIST_CALENDARS",
-        "description": "List calendars for an account",
-        "params": {
-          "account_id": {
-            "type": "string",
-            "required": true
+          "type": "tenant",
+          "description": "The created tenant",
+          "example": {
+            "status": "ok",
+            "tenant": {
+              "id": "t1",
+              "name": "Terminal 23"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "name can't be blank"
           }
-        },
-        "response": {
-          "type": "calendar_list",
-          "description": "List of calendars for the account"
         }
       }
     ]

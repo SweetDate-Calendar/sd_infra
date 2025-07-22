@@ -1,39 +1,43 @@
 module SweetDate
-class Tier
+class Tenant
     def self.list(params)
-      # TODO: implement TIERS.LIST
+      # TODO: implement TENANTS.LIST
     end
     
     def self.get(params)
-      # TODO: implement TIERS.GET
+      # TODO: implement TENANTS.GET
+    end
+    
+    def self.create(params)
+      # TODO: implement TENANTS.CREATE
     end
     
     def self.update(params)
-      # TODO: implement TIERS.UPDATE
+      # TODO: implement TENANTS.UPDATE
     end
     
     def self.delete(params)
-      # TODO: implement TIERS.DELETE
+      # TODO: implement TENANTS.DELETE
     end
     
-    def self.create_tier_user(params)
-      # TODO: implement TIERS.CREATE_TIER_USER
+    def self.create_tenant_user(params)
+      # TODO: implement TENANTS.CREATE_TENANT_USER
     end
     
-    def self.get_tier_user(params)
-      # TODO: implement TIERS.GET_TIER_USER
+    def self.get_tenant_user(params)
+      # TODO: implement TENANTS.GET_TENANT_USER
     end
     
-    def self.list_tier_users(params)
-      # TODO: implement TIERS.LIST_TIER_USERS
+    def self.list_tenant_users(params)
+      # TODO: implement TENANTS.LIST_TENANT_USERS
     end
     
-    def self.update_tier_user(params)
-      # TODO: implement TIERS.UPDATE_TIER_USER
+    def self.update_tenant_user(params)
+      # TODO: implement TENANTS.UPDATE_TENANT_USER
     end
     
-    def self.delete_tier_user(params)
-      # TODO: implement TIERS.DELETE_TIER_USER
+    def self.delete_tenant_user(params)
+      # TODO: implement TENANTS.DELETE_TENANT_USER
     end
     
   end

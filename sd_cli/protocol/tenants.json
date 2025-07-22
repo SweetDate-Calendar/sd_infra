@@ -1,0 +1,274 @@
+{
+  "TENANTS": {
+    "commands": [
+      {
+        "name": "LIST",
+        "description": "Returns the list of tenants",
+        "params": {},
+        "response": {
+          "type": "tenant_list",
+          "description": "List of tenants",
+          "example": {
+            "status": "ok",
+            "tenants": [
+              {
+                "id": "t1",
+                "name": "Terminal 23",
+                "account_id": "acc-123"
+              },
+              {
+                "id": "t2",
+                "name": "Airport Lounge",
+                "account_id": "acc-456"
+              }
+            ]
+          },
+          "error_example": {
+            "status": "error",
+            "message": "unauthorized"
+          }
+        }
+      },
+      {
+        "name": "GET",
+        "description": "Gets a single tenant by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "tenant",
+          "description": "The tenant object",
+          "example": {
+            "status": "ok",
+            "tenant": {
+              "id": "t1",
+              "name": "Terminal 23",
+              "account_id": "acc-123"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
+        }
+      },
+      {
+        "name": "UPDATE",
+        "description": "Updates an existing tenant",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": false
+          },
+          "account_id": {
+            "type": "string",
+            "required": false
+          }
+        },
+        "response": {
+          "type": "tenant",
+          "description": "The updated tenant",
+          "example": {
+            "status": "ok",
+            "tenant": {
+              "id": "t1",
+              "name": "Updated Terminal",
+              "account_id": "acc-123"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found or invalid input"
+          }
+        }
+      },
+      {
+        "name": "DELETE",
+        "description": "Deletes a tenant",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "tenant",
+          "description": "The deleted tenant",
+          "example": {
+            "status": "ok",
+            "tenant": {
+              "id": "t1",
+              "name": "Terminal 23"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
+        }
+      },
+      {
+        "name": "CREATE_USER",
+        "description": "Create a tenant user association with role",
+        "params": {
+          "tenant_id": {
+            "type": "string",
+            "required": true
+          },
+          "user_id": {
+            "type": "string",
+            "required": true
+          },
+          "role": {
+            "type": "string",
+            "required": true,
+            "enum": [
+              "owner",
+              "editor",
+              "viewer"
+            ]
+          }
+        },
+        "response": {
+          "type": "tenant_user",
+          "description": "The created tenant user association",
+          "example": {
+            "status": "ok",
+            "tenant_user": {
+              "id": "tu-1",
+              "tenant_id": "t1",
+              "user_id": "u1",
+              "role": "editor"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "invalid tenant or user"
+          }
+        }
+      },
+      {
+        "name": "GET_USER",
+        "description": "Get a tenant user by ID",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "tenant_user",
+          "description": "The tenant user association",
+          "example": {
+            "status": "ok",
+            "tenant_user": {
+              "id": "tu-1",
+              "tenant_id": "t1",
+              "user_id": "u1",
+              "role": "editor"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
+        }
+      },
+      {
+        "name": "LIST_USERS",
+        "description": "List all tenant users",
+        "params": {},
+        "response": {
+          "type": "tenant_user_list",
+          "description": "List of tenant user associations",
+          "example": {
+            "status": "ok",
+            "tenant_users": [
+              {
+                "id": "tu-1",
+                "tenant_id": "t1",
+                "user_id": "u1",
+                "role": "editor"
+              },
+              {
+                "id": "tu-2",
+                "tenant_id": "t1",
+                "user_id": "u2",
+                "role": "viewer"
+              }
+            ]
+          },
+          "error_example": {
+            "status": "error",
+            "message": "unauthorized"
+          }
+        }
+      },
+      {
+        "name": "UPDATE_USER",
+        "description": "Update a tenant user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "role": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "owner",
+              "editor",
+              "viewer"
+            ]
+          }
+        },
+        "response": {
+          "type": "tenant_user",
+          "description": "The updated tenant user",
+          "example": {
+            "status": "ok",
+            "tenant_user": {
+              "id": "tu-1",
+              "role": "owner"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found or invalid role"
+          }
+        }
+      },
+      {
+        "name": "DELETE_USER",
+        "description": "Delete a tenant user",
+        "params": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "response": {
+          "type": "tenant_user",
+          "description": "The deleted tenant user association",
+          "example": {
+            "status": "ok",
+            "tenant_user": {
+              "id": "tu-1"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,112 +1,123 @@
-defmodule SweetDate.Tier do
+defmodule SweetDate.Tenant do
   @moduledoc """
-  Tier API wrapper.
+  Tenant API wrapper.
 
-  This module provides functions for tiers operations.
+  This module provides functions for TENANTS operations.
   """
 
   @doc """
-  Returns the list of tiers
-  
+  Returns the list of TENANTS
+
   ## Parameters
-  
+
     No parameters required.
   """
   def list(params) do
-    # TODO: implement TIERS.LIST
+    # TODO: implement TENANTS.LIST
   end
-  
+
   @doc """
-  Gets a single tier by ID
-  
+  Gets a single tenant by ID
+
   ## Parameters
-  
+
     - `id`: string (required)
   """
   def get(params) do
-    # TODO: implement TIERS.GET
+    # TODO: implement TENANTS.GET
   end
-  
+
   @doc """
-  Updates an existing tier
-  
+  Creates a new tenant
+
   ## Parameters
-  
+
+    - `account_id`: string (required)
+    - `id`: string (required)
+  """
+  def create(params) do
+    # TODO: implement TENANTS.CREATE
+  end
+
+  @doc """
+  Updates an existing tenant
+
+  ## Parameters
+
     - `account_id`: string (optional)
     - `id`: string (required)
     - `name`: string (optional)
   """
   def update(params) do
-    # TODO: implement TIERS.UPDATE
+    # TODO: implement TENANTS.UPDATE
   end
-  
+
   @doc """
-  Deletes a tier
-  
+  Deletes a tenant
+
   ## Parameters
-  
+
     - `id`: string (required)
   """
   def delete(params) do
-    # TODO: implement TIERS.DELETE
+    # TODO: implement TENANTS.DELETE
   end
-  
+
   @doc """
-  Create a tier user association with role
-  
+  Create a tenant user association with role
+
   ## Parameters
-  
+
     - `role`: string (required) - one of: ["owner", "editor", "viewer"]
-    - `tier_id`: string (required)
+    - `tenant_id`: string (required)
     - `user_id`: string (required)
   """
-  def create_tier_user(params) do
-    # TODO: implement TIERS.CREATE_TIER_USER
+  def create_tenant_user(params) do
+    # TODO: implement TENANTS.CREATE_TENANT_USER
   end
-  
+
   @doc """
-  Get a tier user by ID
-  
+  Get a tenant user by ID
+
   ## Parameters
-  
+
     - `id`: string (required)
   """
-  def get_tier_user(params) do
-    # TODO: implement TIERS.GET_TIER_USER
+  def get_tenant_user(params) do
+    # TODO: implement TENANTS.GET_TENANT_USER
   end
-  
+
   @doc """
-  List all tier users
-  
+  List all tenant users
+
   ## Parameters
-  
+
     No parameters required.
   """
-  def list_tier_users(params) do
-    # TODO: implement TIERS.LIST_TIER_USERS
+  def list_tenant_users(params) do
+    # TODO: implement TENANTS.LIST_TENANT_USERS
   end
-  
+
   @doc """
-  Update a tier user
-  
+  Update a tenant user
+
   ## Parameters
-  
+
     - `id`: string (required)
     - `role`: string (optional) - one of: ["owner", "editor", "viewer"]
   """
-  def update_tier_user(params) do
-    # TODO: implement TIERS.UPDATE_TIER_USER
+  def update_tenant_user(params) do
+    # TODO: implement TENANTS.UPDATE_TENANT_USER
   end
-  
+
   @doc """
-  Delete a tier user
-  
+  Delete a tenant user
+
   ## Parameters
-  
+
     - `id`: string (required)
   """
-  def delete_tier_user(params) do
-    # TODO: implement TIERS.DELETE_TIER_USER
+  def delete_tenant_user(params) do
+    # TODO: implement TENANTS.DELETE_TENANT_USER
   end
-  
 end

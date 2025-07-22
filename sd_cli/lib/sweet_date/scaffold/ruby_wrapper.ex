@@ -47,14 +47,40 @@ defmodule SweetDate.Scaffold.RubyWrapper do
     IO.puts("\u2713 Wrote wrapper #{file_path}")
   end
 
+  # defp generate_class(class_name, namespace, commands) do
+  #   methods =
+  #     commands
+  #     |> normalize_commands()
+  #     |> Enum.map(fn {command_name, _command_def} ->
+  #       method_name = normalize_method_name(command_name)
+
+  #       """
+  #       def self.#{method_name}(params)
+  #         # TODO: implement #{namespace}.#{command_name}
+  #       end
+  #       """
+  #     end)
+
+  #   body = Enum.join(methods, "\n") |> indent(4)
+
+  #   """
+  #   module SweetDate
+  #   class #{class_name}
+  #   #{body}
+  #     end
+  #   end
+  #   """
+  # end
   defp generate_class(class_name, namespace, commands) do
     methods =
       commands
       |> normalize_commands()
-      |> Enum.map(fn {command_name, _command_def} ->
+      |> Enum.map(fn {command_name, command_def} ->
         method_name = normalize_method_name(command_name)
+        doc = format_doc(command_def)
 
         """
+        #{doc}
         def self.#{method_name}(params)
           # TODO: implement #{namespace}.#{command_name}
         end
@@ -70,6 +96,48 @@ defmodule SweetDate.Scaffold.RubyWrapper do
       end
     end
     """
+  end
+
+  defp format_doc(command) do
+    description = command["description"] || "No description provided."
+
+    params_doc =
+      case command["params"] do
+        nil ->
+          nil
+
+        params ->
+          "# params:\n" <>
+            Enum.map_join(params, "\n", fn {key, spec} ->
+              required = if spec["required"], do: "required", else: "optional"
+              type = spec["type"]
+              "#   - #{key}: #{type} (#{required})"
+            end)
+      end
+
+    example =
+      case command["response"]["example"] do
+        nil -> nil
+        ex -> "# return example:\n# " <> encode_json_comment(ex)
+      end
+
+    error_example =
+      case command["response"]["error_example"] do
+        nil -> nil
+        ex -> "# error example:\n# " <> encode_json_comment(ex)
+      end
+
+    ["# #{description}", params_doc, example, error_example]
+    |> Enum.reject(&is_nil/1)
+    |> Enum.join("\n")
+  end
+
+  defp encode_json_comment(data) do
+    data
+    |> Jason.encode!()
+    |> String.replace("\n", "")
+    # Prevent nested formatting
+    |> String.replace(~r/(.)/, "\\1")
   end
 
   # Handle both old format (map) and new format (array)

@@ -7,7 +7,23 @@
         "params": {},
         "response": {
           "type": "calendar_list",
-          "description": "List of calendars"
+          "description": "List of calendars",
+          "example": {
+            "status": "ok",
+            "calendars": [
+              {
+                "id": "c1",
+                "name": "Events",
+                "tenant_id": "t1",
+                "visibility": "public",
+                "color_theme": "green"
+              }
+            ]
+          },
+          "error_example": {
+            "status": "error",
+            "message": "unauthorized"
+          }
         }
       },
       {
@@ -21,7 +37,21 @@
         },
         "response": {
           "type": "calendar",
-          "description": "The calendar object"
+          "description": "The calendar object",
+          "example": {
+            "status": "ok",
+            "calendar": {
+              "id": "c1",
+              "name": "Events",
+              "tenant_id": "t1",
+              "visibility": "public",
+              "color_theme": "green"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       },
       {
@@ -44,17 +74,31 @@
               "shared",
               "public",
               "unlisted",
-              "tiered"
+              "tenanted"
             ]
           },
-          "tier_id": {
+          "tenant_id": {
             "type": "string",
             "required": true
           }
         },
         "response": {
           "type": "calendar",
-          "description": "The created calendar"
+          "description": "The created calendar",
+          "example": {
+            "status": "ok",
+            "calendar": {
+              "id": "c2",
+              "name": "Bookings",
+              "tenant_id": "t1",
+              "visibility": "private",
+              "color_theme": "blue"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "validation failed"
+          }
         }
       },
       {
@@ -77,14 +121,27 @@
             "type": "string",
             "required": false
           },
-          "tier_id": {
+          "tenant_id": {
             "type": "string",
             "required": false
           }
         },
         "response": {
           "type": "calendar",
-          "description": "The updated calendar"
+          "description": "The updated calendar",
+          "example": {
+            "status": "ok",
+            "calendar": {
+              "id": "c1",
+              "name": "Updated Calendar",
+              "visibility": "shared",
+              "color_theme": "red"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found or invalid data"
+          }
         }
       },
       {
@@ -98,7 +155,18 @@
         },
         "response": {
           "type": "calendar",
-          "description": "The deleted calendar"
+          "description": "The deleted calendar",
+          "example": {
+            "status": "ok",
+            "calendar": {
+              "id": "c1",
+              "name": "Deleted Calendar"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       },
       {
@@ -125,7 +193,20 @@
         },
         "response": {
           "type": "calendar_user",
-          "description": "The calendar user association"
+          "description": "The calendar user association",
+          "example": {
+            "status": "ok",
+            "calendar_user": {
+              "id": "cu1",
+              "calendar_id": "c1",
+              "user_id": "u1",
+              "role": "editor"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "invalid input"
+          }
         }
       },
       {
@@ -143,7 +224,18 @@
         },
         "response": {
           "type": "calendar_user",
-          "description": "The updated calendar user"
+          "description": "The updated calendar user",
+          "example": {
+            "status": "ok",
+            "calendar_user": {
+              "id": "cu1",
+              "role": "viewer"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found or invalid role"
+          }
         }
       },
       {
@@ -152,7 +244,28 @@
         "params": {},
         "response": {
           "type": "calendar_user_list",
-          "description": "List of calendar-user associations"
+          "description": "List of calendar-user associations",
+          "example": {
+            "status": "ok",
+            "calendar_users": [
+              {
+                "id": "cu1",
+                "calendar_id": "c1",
+                "user_id": "u1",
+                "role": "owner"
+              },
+              {
+                "id": "cu2",
+                "calendar_id": "c1",
+                "user_id": "u2",
+                "role": "viewer"
+              }
+            ]
+          },
+          "error_example": {
+            "status": "error",
+            "message": "unauthorized"
+          }
         }
       },
       {
@@ -166,7 +279,20 @@
         },
         "response": {
           "type": "calendar_user",
-          "description": "The calendar user association"
+          "description": "The calendar user association",
+          "example": {
+            "status": "ok",
+            "calendar_user": {
+              "id": "cu1",
+              "calendar_id": "c1",
+              "user_id": "u1",
+              "role": "owner"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       },
       {
@@ -180,7 +306,17 @@
         },
         "response": {
           "type": "calendar_user",
-          "description": "The removed calendar user association"
+          "description": "The removed calendar user association",
+          "example": {
+            "status": "ok",
+            "calendar_user": {
+              "id": "cu1"
+            }
+          },
+          "error_example": {
+            "status": "error",
+            "message": "not found"
+          }
         }
       }
     ]
