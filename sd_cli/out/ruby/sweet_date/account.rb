@@ -1,8 +1,7 @@
 module SweetDate
 class Account
     # Returns the list of accounts
-    # params:
-    
+    # params (Hash):
     # return example:
     # {"accounts":[{"id":"acc-123","name":"Acme Corp"},{"id":"acc-456","name":"Globex Inc"}],"status":"ok"}
     # error example:
@@ -12,8 +11,8 @@ class Account
     end
     
     # Gets a single account by ID
-    # params:
-    #   - id: string (required)
+    # params (Hash):
+      - id: string (required)
     # return example:
     # {"account":{"id":"acc-123","name":"Acme Corp"},"status":"ok"}
     # error example:
@@ -23,8 +22,8 @@ class Account
     end
     
     # Creates a new account
-    # params:
-    #   - name: string (required)
+    # params (Hash):
+      - name: string (required)
     # return example:
     # {"account":{"id":"acc-456","name":"NewCo Ltd"},"status":"ok"}
     # error example:
@@ -34,9 +33,9 @@ class Account
     end
     
     # Updates an existing account
-    # params:
-    #   - id: string (required)
-    #   - name: string (optional)
+    # params (Hash):
+      - id: string (required)
+      - name: string (optional)
     # return example:
     # {"account":{"id":"acc-123","name":"Updated Corp"},"status":"ok"}
     # error example:
@@ -46,8 +45,8 @@ class Account
     end
     
     # Deletes an account
-    # params:
-    #   - id: string (required)
+    # params (Hash):
+      - id: string (required)
     # return example:
     # {"account":{"id":"acc-123","name":"Deleted Inc"},"status":"ok"}
     # error example:
@@ -57,18 +56,17 @@ class Account
     end
     
     # Returns the list of users
-    # params:
-    
+    # params (Hash):
     def self.list_users(params)
       # TODO: implement ACCOUNTS.LIST_USERS
     end
     
     # Creates a new user and associates with account if user doesn't exist
-    # params:
-    #   - account_id: string (required)
-    #   - email: string (required)
-    #   - name: string (required)
-    #   - role: string (required)
+    # params (Hash):
+      - account_id: string (required)
+      - email: string (required)
+      - name: string (required)
+      - role: string (required)
     # return example:
     # {"status":"ok","user":{"email":"alice@example.com","id":"uuid","name":"Alice"}}
     # error example:
@@ -78,8 +76,8 @@ class Account
     end
     
     # Gets a single user by ID
-    # params:
-    #   - id: string (required)
+    # params (Hash):
+      - id: string (required)
     # return example:
     # {"status":"ok","user":{"email":"alice@example.com","id":"u1","name":"Alice"}}
     # error example:
@@ -89,8 +87,8 @@ class Account
     end
     
     # Deletes a user
-    # params:
-    #   - id: string (required)
+    # params (Hash):
+      - id: string (required)
     # return example:
     # {"status":"ok","user":{"email":"alice@example.com","id":"u1","name":"Alice"}}
     # error example:
@@ -100,9 +98,9 @@ class Account
     end
     
     # Creates a new tenant
-    # params:
-    #   - account_id: string (required)
-    #   - name: string (required)
+    # params (Hash):
+      - account_id: string (required)
+      - name: string (required)
     # return example:
     # {"status":"ok","tenant":{"id":"t1","name":"Terminal 23"}}
     # error example:

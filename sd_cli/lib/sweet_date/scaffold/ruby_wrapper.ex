@@ -107,12 +107,16 @@ defmodule SweetDate.Scaffold.RubyWrapper do
           nil
 
         params ->
-          "# params:\n" <>
-            Enum.map_join(params, "\n", fn {key, spec} ->
-              required = if spec["required"], do: "required", else: "optional"
-              type = spec["type"]
-              "#   - #{key}: #{type} (#{required})"
+          param_lines =
+            params
+            |> Enum.map(fn {key, value} ->
+              type = value["type"] || "string"
+              required = if value["required"], do: "required", else: "optional"
+              "  - #{key}: #{type} (#{required})"
             end)
+
+          ["# params (Hash):" | param_lines]
+          |> Enum.join("\n")
       end
 
     example =

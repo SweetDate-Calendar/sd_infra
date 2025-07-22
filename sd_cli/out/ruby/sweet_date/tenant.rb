@@ -1,8 +1,7 @@
 module SweetDate
 class Tenant
     # Returns the list of tenants
-    # params:
-    
+    # params (Hash):
     # return example:
     # {"status":"ok","tenants":[{"account_id":"acc-123","id":"t1","name":"Terminal 23"},{"account_id":"acc-456","id":"t2","name":"Airport Lounge"}]}
     # error example:
@@ -12,8 +11,8 @@ class Tenant
     end
     
     # Gets a single tenant by ID
-    # params:
-    #   - id: string (required)
+    # params (Hash):
+      - id: string (required)
     # return example:
     # {"status":"ok","tenant":{"account_id":"acc-123","id":"t1","name":"Terminal 23"}}
     # error example:
@@ -23,10 +22,10 @@ class Tenant
     end
     
     # Updates an existing tenant
-    # params:
-    #   - account_id: string (optional)
-    #   - id: string (required)
-    #   - name: string (optional)
+    # params (Hash):
+      - account_id: string (optional)
+      - id: string (required)
+      - name: string (optional)
     # return example:
     # {"status":"ok","tenant":{"account_id":"acc-123","id":"t1","name":"Updated Terminal"}}
     # error example:
@@ -36,8 +35,8 @@ class Tenant
     end
     
     # Deletes a tenant
-    # params:
-    #   - id: string (required)
+    # params (Hash):
+      - id: string (required)
     # return example:
     # {"status":"ok","tenant":{"id":"t1","name":"Terminal 23"}}
     # error example:
@@ -47,10 +46,10 @@ class Tenant
     end
     
     # Create a tenant user association with role
-    # params:
-    #   - role: string (required)
-    #   - tenant_id: string (required)
-    #   - user_id: string (required)
+    # params (Hash):
+      - role: string (required)
+      - tenant_id: string (required)
+      - user_id: string (required)
     # return example:
     # {"status":"ok","tenant_user":{"id":"tu-1","role":"editor","tenant_id":"t1","user_id":"u1"}}
     # error example:
@@ -60,8 +59,8 @@ class Tenant
     end
     
     # Get a tenant user by ID
-    # params:
-    #   - id: string (required)
+    # params (Hash):
+      - id: string (required)
     # return example:
     # {"status":"ok","tenant_user":{"id":"tu-1","role":"editor","tenant_id":"t1","user_id":"u1"}}
     # error example:
@@ -71,8 +70,7 @@ class Tenant
     end
     
     # List all tenant users
-    # params:
-    
+    # params (Hash):
     # return example:
     # {"status":"ok","tenant_users":[{"id":"tu-1","role":"editor","tenant_id":"t1","user_id":"u1"},{"id":"tu-2","role":"viewer","tenant_id":"t1","user_id":"u2"}]}
     # error example:
@@ -82,9 +80,9 @@ class Tenant
     end
     
     # Update a tenant user
-    # params:
-    #   - id: string (required)
-    #   - role: string (optional)
+    # params (Hash):
+      - id: string (required)
+      - role: string (optional)
     # return example:
     # {"status":"ok","tenant_user":{"id":"tu-1","role":"owner"}}
     # error example:
@@ -94,8 +92,8 @@ class Tenant
     end
     
     # Delete a tenant user
-    # params:
-    #   - id: string (required)
+    # params (Hash):
+      - id: string (required)
     # return example:
     # {"status":"ok","tenant_user":{"id":"tu-1"}}
     # error example:
